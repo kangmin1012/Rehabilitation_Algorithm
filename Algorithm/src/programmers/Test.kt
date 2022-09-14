@@ -4,10 +4,12 @@ var answer: Long = 0 // expected answer = 5
 var n: Int = 0
 
 fun main() {
-    n = 4
-    val jumpList = mutableListOf<Int>()
-    getCase(jumpList)
-    println(answer)
+//    n = 4
+//    val jumpList = mutableListOf<Int>()
+//    getCase(jumpList)
+//    println(answer)
+    val a = "hello"
+    println(a.toList())
 }
 
 fun getCase(jumpList: MutableList<Int>) {
