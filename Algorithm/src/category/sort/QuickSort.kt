@@ -6,6 +6,7 @@ package category.sort
 fun main() {
     val array = mutableListOf(3, 9, 4, 7, 0, 1, 5, 8, 6, 2)
     println(array)
+    println("퀵정렬을 시작합니다.")
     quickSort(array, 0, array.size - 1)
     println(array)
 }
@@ -45,11 +46,4 @@ private fun partition(arr: MutableList<Int>, start: Int, end: Int): Int {
         }
     }
     return startIndex // 정렬이 완료된 후 pivot을 중심으로 한 오른쪽 파티션 시작 위치 반환
-}
-
-/** 두 개의 값 자리 변경 */
-private fun swap(arr: MutableList<Int>, start: Int, end: Int) {
-    val temp = arr[start]
-    arr[start] = arr[end]
-    arr[end] = temp
 }
