@@ -20,6 +20,7 @@ fun getCombination(
     choiceCount: Int
 ) {
     if (choiceCount == 0) {
+        println(c.filterIndexed { index, _ -> choices[index] })
         result.add(
             c.filterIndexed { index, _ -> choices[index] }
         )
