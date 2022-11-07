@@ -6,8 +6,9 @@ import kotlin.math.sqrt
 fun main() {
     val nums = intArrayOf(1,2,3,4)
     val answer = mutableListOf<List<Int>>()
+    val pickedNum = mutableListOf<Int>()
 
-    getCombination(answer, nums, BooleanArray(nums.size){false}, 0, 3)
+    getCombination(answer, nums, pickedNum, 0, 3)
 
     println(answer.filter { isPrime(it.sum()) }.size)
 }
@@ -15,26 +16,24 @@ fun main() {
 fun getCombination(
     result: MutableList<List<Int>>,
     c: IntArray,
-    choices: BooleanArray,
+    pickedNum: MutableList<Int>,
     startIndex: Int,
     choiceCount: Int
 ) {
     if (choiceCount == 0) {
-        println(c.filterIndexed { index, _ -> choices[index] })
-        result.add(
-            c.filterIndexed { index, _ -> choices[index] }
-        )
+        println(pickedNum)
+        result.add(pickedNum.map { it })
+        println(result)
     } else {
         for (i in startIndex until c.size) {
-            choices[i] = true
-            getCombination(result, c, choices, i + 1, choiceCount - 1)
-            choices[i] = false
+            pickedNum.add(c[i])
+            getCombination(result, c, pickedNum, i + 1, choiceCount - 1)
+            pickedNum.removeAt(pickedNum.lastIndex)
         }
     }
 }
 
 fun isPrime(num: Int): Boolean {
     if (num <= 1) return false
-
     return (2..sqrt(num.toDouble()).toInt()).none { num % it == 0 }
 }
